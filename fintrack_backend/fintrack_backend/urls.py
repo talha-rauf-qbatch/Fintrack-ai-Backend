@@ -31,4 +31,7 @@ urlpatterns = [
 
     # Inncome
     path('api/income/', include('income.urls')),
+
+    # Expensce
+    path('api/expense/', include('expense.urls'))
 ]
