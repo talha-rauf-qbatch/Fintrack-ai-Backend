@@ -13,7 +13,6 @@ class Expense(models.Model):
         ("Education", "Education (Tuition, Books, Online Courses, Workshops, Student Loans)"),
         ("Rent", "Rent (Apartment, Mortgage, Roommate Share, Storage, Parking)"),
         ("Utilities", "Utilities (Electricity, Water, Gas, Internet, Trash Services)"),
-        ("Misc", "Miscellaneous (Gifts, Charity, Pet Care, Unexpected Repairs, Subscriptions)"),
         ("Transportation", "Transportation (Fuel, Car Maintenance, Public Transport, Taxis)"),
         ("Taxes", "Taxes (Income Tax, Property Tax, Sales Tax, Tax Penalties)"),
         ("Insurance", "Insurance (Health, Life, Auto, Home, Travel)"),
@@ -24,14 +23,14 @@ class Expense(models.Model):
         ("Gifts & Donations",
          "Gifts & Donations (Birthday, Christmas, Charitable Donations)"),
         ("Pets", "Pets (Food, Veterinary, Supplies, Boarding)"),
-        ("Miscellaneous", "Miscellaneous (Bank Fees, Unexpected Costs, Small Purchases)"),
+        ("Misc", "Miscellaneous (Gifts, Charity, Pet Care, Unexpected Repairs, Subscriptions)"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="expense")
     description = models.CharField(max_length=250)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     date = models.DateField()
-    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default="Misc")
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, blank=True, null=True)
     ai_suggested_category = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
