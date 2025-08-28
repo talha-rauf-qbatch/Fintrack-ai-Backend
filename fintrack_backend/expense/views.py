@@ -24,7 +24,7 @@ class ExpenseListCreateView(generics.ListCreateAPIView):
             expense.save(update_fields=["category", "ai_suggested_category"])
 
         except Exception as err:
-            print("LLM Error:", err)
+            print("LLM Error in Expense:", err)
 
 
 class ExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
