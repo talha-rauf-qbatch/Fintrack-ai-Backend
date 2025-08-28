@@ -4,26 +4,25 @@ from django.contrib.auth.models import User
 
 class Expense(models.Model):
     CATEGORY_CHOICES = [
-        ("Food", "Food (Groceries, Dining Out, Snacks, Beverages)"),
-        ("Travel", "Travel (Flights, Accommodation, Transport, Activities, Souvenirs)"),
-        ("Bills", "Bills (Electricity, Water, Gas, Internet, Phone, Insurance)"),
-        ("Shopping", "Shopping (Clothing, Electronics, Home Goods, Beauty Products, Toys)"),
-        ("Health", "Health (Doctor Visits, Medications, Therapy, Fitness)"),
-        ("Entertainment", "Entertainment (Movies, Concerts, Games, Hobbies, Books)"),
-        ("Education", "Education (Tuition, Books, Online Courses, Workshops, Student Loans)"),
-        ("Rent", "Rent (Apartment, Mortgage, Roommate Share, Storage, Parking)"),
-        ("Utilities", "Utilities (Electricity, Water, Gas, Internet, Trash Services)"),
-        ("Transportation", "Transportation (Fuel, Car Maintenance, Public Transport, Taxis)"),
-        ("Taxes", "Taxes (Income Tax, Property Tax, Sales Tax, Tax Penalties)"),
-        ("Insurance", "Insurance (Health, Life, Auto, Home, Travel)"),
-        ("Debt Repayment", "Debt Repayment (Credit Cards, Loans, Mortgages, Personal Loans)"),
-        ("Childcare", "Childcare (Daycare, Babysitting, School Fees, Activities)"),
-        ("Maintenance", "Maintenance (Home Repairs, Car Repairs, Appliance Replacement)"),
-        ("Legal", "Legal (Lawyer Fees, Court Costs, Legal Settlements)"),
-        ("Gifts & Donations",
-         "Gifts & Donations (Birthday, Christmas, Charitable Donations)"),
-        ("Pets", "Pets (Food, Veterinary, Supplies, Boarding)"),
-        ("Misc", "Miscellaneous (Gifts, Charity, Pet Care, Unexpected Repairs, Subscriptions)"),
+        ("Food", "Food"),
+        ("Travel", "Travel"),
+        ("Bills", "Bills"),
+        ("Shopping", "Shopping"),
+        ("Health", "Health"),
+        ("Entertainment", "Entertainment"),
+        ("Education", "Education"),
+        ("Rent", "Rent"),
+        ("Utilities", "Utilities"),
+        ("Transportation", "Transportation"),
+        ("Taxes", "Taxes"),
+        ("Insurance", "Insurance"),
+        ("Debt Repayment", "Debt Repayment"),
+        ("Childcare", "Childcare"),
+        ("Maintenance", "Maintenance"),
+        ("Legal", "Legal"),
+        ("Gifts & Donations","Gifts & Donations"),
+        ("Pets", "Pets"),
+        ("Miscellaneous", "Miscellaneous"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="expense")
@@ -31,7 +30,6 @@ class Expense(models.Model):
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     date = models.DateField()
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, blank=True, null=True)
-    ai_suggested_category = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
