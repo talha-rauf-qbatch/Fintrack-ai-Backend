@@ -6,7 +6,7 @@ from ai.services import suggest_expense_category
 
 class ExpenseListCreateView(generics.ListCreateAPIView):
     serializer_class = ExpenseSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Expense.objects.filter(user=self.request.user)
@@ -29,7 +29,7 @@ class ExpenseListCreateView(generics.ListCreateAPIView):
 
 class ExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ExpenseSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Expense.objects.filter(user=self.request.user)

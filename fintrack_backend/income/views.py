@@ -7,7 +7,7 @@ from ai.services import suggest_income_category
 
 class IncomeListCreateView(generics.ListCreateAPIView):
     serializer_class = IncomeSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Income.objects.filter(user=self.request.user)
@@ -30,7 +30,7 @@ class IncomeListCreateView(generics.ListCreateAPIView):
 
 class IncomeDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = IncomeSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Income.objects.filter(user=self.request.user)
