@@ -7,7 +7,7 @@ from .serializers import RegisterSerializer, UserSerializer
 from .models import Logout
 
 class RegisterView(APIView):
-    permission_class = [permissions.AllowAny]
+    permission_classes = [permissions.AllowAny]
 
     def post(self, request):
         ser = RegisterSerializer(data=request.data)
@@ -17,14 +17,14 @@ class RegisterView(APIView):
     
 class MeView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user
     
 
 class LogoutView(APIView):
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         user = request.user

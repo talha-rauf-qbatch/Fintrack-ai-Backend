@@ -33,5 +33,8 @@ urlpatterns = [
     path('api/income/', include('income.urls')),
 
     # Expensce
-    path('api/expense/', include('expense.urls'))
+    path('api/expense/', include('expense.urls')),
+
+    # AI bot
+    path('api/ai/', include('ai.urls'))
 ]
