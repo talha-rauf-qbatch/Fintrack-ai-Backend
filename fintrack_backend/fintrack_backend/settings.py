@@ -153,9 +153,49 @@ REST_FRAMEWORK = {
     ),
 }
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    # -----------------------------
+    # Formatters
+    # -----------------------------
+    "formatters": {
+        "default": {
+            "format": "%(asctime)s %(levelname)s [%(name)s] %(message)s",
+        },
+    },
+    # -----------------------------
+    # Handlers
+    # -----------------------------
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "default",
+        },
+    },
+    # -----------------------------
+    # Root logger (always active)
+    # -----------------------------
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",
+    },
+    # -----------------------------
+    # Per-logger overrides
+    # -----------------------------
+    "loggers": {
+        # Django DB query logs
+        "django.db.backends": {
+            "handlers": ["console"] if os.getenv("ENABLE_DB_LOGS") else [],
+            "level": "DEBUG" if os.getenv("ENABLE_DB_LOGS") else "WARNING",
+            "propagate": False,  # prevent DB logs bubbling into root
+        },
+    },
+}
+
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "AUTH_HEADER_TYPES": ("Bearer",),
     "UPDATE_LAST_LOGIN": True,
