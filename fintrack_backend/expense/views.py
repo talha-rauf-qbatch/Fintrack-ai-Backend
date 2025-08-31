@@ -6,7 +6,6 @@ from .serializers import ExpenseSerializer
 
 class ExpenseListCreateView(generics.ListCreateAPIView):
     serializer_class = ExpenseSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Expense.objects.filter(user=self.request.user)
@@ -18,7 +17,6 @@ class ExpenseListCreateView(generics.ListCreateAPIView):
 
 class ExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ExpenseSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Expense.objects.filter(user=self.request.user)

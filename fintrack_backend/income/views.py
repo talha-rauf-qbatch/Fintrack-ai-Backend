@@ -6,7 +6,6 @@ from .serializers import IncomeSerializer
 
 class IncomeListCreateView(generics.ListCreateAPIView):
     serializer_class = IncomeSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Income.objects.filter(user=self.request.user)
@@ -16,7 +15,6 @@ class IncomeListCreateView(generics.ListCreateAPIView):
 
 class IncomeDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = IncomeSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Income.objects.filter(user=self.request.user)

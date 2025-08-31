@@ -17,14 +17,12 @@ class RegisterView(APIView):
     
 class MeView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user
     
 
 class LogoutView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         user = request.user

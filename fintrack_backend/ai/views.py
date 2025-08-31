@@ -6,8 +6,7 @@ from .serializers import ChatbotQuerySerializer
 from .services import financial_chatbot
 
 class FinancialChatbotView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
-
+    
     def post(self, request):
         serializer = ChatbotQuerySerializer(data=request.data)
         if serializer.is_valid():
