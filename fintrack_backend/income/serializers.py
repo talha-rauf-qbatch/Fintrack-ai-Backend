@@ -11,3 +11,4 @@ class IncomeSerializer(serializers.ModelSerializer):
         if value < 0:
             raise serializers.ValidationError("Amount must be greater than zero")
         return value
+    

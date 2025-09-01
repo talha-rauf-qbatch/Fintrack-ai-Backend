@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'accounts',                    #  account app 
+    'accounts',  # account app
     'rest_framework',              # DRF
-    'corsheaders',                 #  CORS             
-    'rest_framework_simplejwt',    #  JWT
+    'corsheaders',  # CORS
+    'rest_framework_simplejwt',  # JWT
     'income',                      # Inncome
     'expense',                     # Expense
 ]
@@ -61,11 +61,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [            #URLs for React
-    "http://localhost:3000",    
+CORS_ALLOWED_ORIGINS = [  # URLs for React
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:5173",     
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://fintrack-ai-vert.vercel.app",
 ]
 
 
@@ -192,6 +193,19 @@ LOGGING = {
         },
     },
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("POSTGRES_DB", "fintrack_db"),
+        'USER': os.getenv("POSTGRES_USER", "fintrack_user"),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD", "strongpassword"),
+        'HOST': os.getenv("POSTGRES_HOST", "localhost"),
+        'PORT': os.getenv("POSTGRES_PORT", "5432"),
+    }
+}
+
+DISABLE_SERVER_SIDE_CURSORS = True
 
 
 SIMPLE_JWT = {

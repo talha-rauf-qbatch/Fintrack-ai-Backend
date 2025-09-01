@@ -29,7 +29,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return value
 
     def create(self, validated_data):
-        # make sure password hash ho
         return User.objects.create_user(**validated_data)
 
 class LogoutSerializer(serializers.ModelSerializer):

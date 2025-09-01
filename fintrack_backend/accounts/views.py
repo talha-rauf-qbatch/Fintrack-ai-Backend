@@ -37,3 +37,4 @@ class LogoutView(APIView):
             refresh_token = refresh
         )
         return Response({"message": "Logout recorded.Clear tokens on client."}, status=status.HTTP_200_OK)
+    

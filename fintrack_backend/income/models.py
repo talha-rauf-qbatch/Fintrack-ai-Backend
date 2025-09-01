@@ -40,4 +40,5 @@ class Income(models.Model):
         ordering = ["-date","-created_at"]
 
     def __str__(self):
-        return f"{self.user.username} - {self.amount} ({self.category or "Uncategorized"})"
+        return f"{self.user.username} - {self.amount} ({self.category})"
+    

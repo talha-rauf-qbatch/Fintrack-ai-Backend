@@ -9,9 +9,11 @@ class FinancialChatbotView(APIView):
     
     def post(self, request):
         serializer = ChatbotQuerySerializer(data=request.data)
-        if serializer.is_valid():
-            query = serializer.validated_data["query"]
-            advice = financial_chatbot(query)
-            return Response({"advice": advice}, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        query = serializer.validated_data["query"]
+        advice = financial_chatbot(query)
+        return Response({"advice": advice}, status=status.HTTP_200_OK)
+
             
